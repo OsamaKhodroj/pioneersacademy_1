@@ -49,6 +49,36 @@ namespace FirstWebApp.Controllers
             return View();
         }
 
+        public IActionResult Index2()
+        {
+            var userId = Guid.Parse("E48B11A8-FA0A-412E-8A7F-D7DF4801A54F");
+
+
+            var userService = new UserService();
+            userService.Add(new AddUserRequest()
+            {
+                Id = userId,
+                FullName = "Osama",
+                EmailAddress = "oo@oo.com",
+                Address = "Amman",
+                Password = "102030"
+            });
+
+
+
+            var res = userService.GetUserInfo(userId);
+
+
+
+            var x = userService.GetUserInfo();
+
+            Console.WriteLine(x.Item1);
+            Console.WriteLine(x.Item2);
+
+
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();
